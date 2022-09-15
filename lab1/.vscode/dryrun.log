@@ -1,0 +1,6 @@
+make --dry-run --keep-going --print-directory
+make: Entering directory `/Users/yangyuhsin/Documents/22Spring/CS-412_SS/lab1'
+make: Leaving directory `/Users/yangyuhsin/Documents/22Spring/CS-412_SS/lab1'
+ 
+make: *** No targets specified and no makefile found.  Stop.
+ 
