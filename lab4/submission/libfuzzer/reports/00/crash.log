@@ -1,0 +1,30 @@
+INFO: Seed: 4129538028
+INFO: Loaded 1 modules   (303 inline 8-bit counters): 303 [0x5af2e0, 0x5af40f),
+INFO: Loaded 1 PC tables (303 PCs): 303 [0x5714c8,0x5727b8),
+INFO:        2 files found in ../seeds/
+INFO: -max_len is not provided; libFuzzer will not generate inputs larger than 4096 bytes
+AddressSanitizer:DEADLYSIGNAL
+=================================================================
+==1005==ERROR: AddressSanitizer: SEGV on unknown address (pc 0x0000004a6db4 bp 0x000000000000 sp 0x7ffde0224660 T0)
+==1005==The signal is caused by a READ memory access.
+==1005==Hint: this fault was caused by a dereference of a high value address (see register values below).  Dissassemble the provided pc to learn which register was used.
+    #0 0x4a6db4 in __asan::Allocator::Deallocate(void*, unsigned long, unsigned long, __sanitizer::BufferedStackTrace*, __asan::AllocType) (/src/libfuzzer/fuzzer_load_png+0x4a6db4)
+    #1 0x51e061 in free (/src/libfuzzer/fuzzer_load_png+0x51e061)
+    #2 0x5504d9 in load_png /src/libfuzzer/pngparser.c:706:7
+    #3 0x54da57 in LLVMFuzzerTestOneInput /src/libfuzzer/fuzzer_load_png.c:15:7
+    #4 0x4586f1 in fuzzer::Fuzzer::ExecuteCallback(unsigned char const*, unsigned long) (/src/libfuzzer/fuzzer_load_png+0x4586f1)
+    #5 0x45a42a in fuzzer::Fuzzer::ReadAndExecuteSeedCorpora(std::__Fuzzer::vector<fuzzer::SizedFile, fuzzer::fuzzer_allocator<fuzzer::SizedFile> >&) (/src/libfuzzer/fuzzer_load_png+0x45a42a)
+    #6 0x45aab9 in fuzzer::Fuzzer::Loop(std::__Fuzzer::vector<fuzzer::SizedFile, fuzzer::fuzzer_allocator<fuzzer::SizedFile> >&) (/src/libfuzzer/fuzzer_load_png+0x45aab9)
+    #7 0x44978e in fuzzer::FuzzerDriver(int*, char***, int (*)(unsigned char const*, unsigned long)) (/src/libfuzzer/fuzzer_load_png+0x44978e)
+    #8 0x4725d2 in main (/src/libfuzzer/fuzzer_load_png+0x4725d2)
+    #9 0x7f03df1530b2 in __libc_start_main (/lib/x86_64-linux-gnu/libc.so.6+0x240b2)
+    #10 0x41e52d in _start (/src/libfuzzer/fuzzer_load_png+0x41e52d)
+
+AddressSanitizer can not provide additional info.
+SUMMARY: AddressSanitizer: SEGV (/src/libfuzzer/fuzzer_load_png+0x4a6db4) in __asan::Allocator::Deallocate(void*, unsigned long, unsigned long, __sanitizer::BufferedStackTrace*, __asan::AllocType)
+==1005==ABORTING
+MS: 0 ; base unit: 0000000000000000000000000000000000000000
+
+
+artifact_prefix='./'; Test unit written to ./crash-da39a3ee5e6b4b0d3255bfef95601890afd80709
+Base64:
